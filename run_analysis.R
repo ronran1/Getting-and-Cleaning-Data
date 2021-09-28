@@ -19,7 +19,7 @@ if(!file.exists(filename)) {
 if(!file.exists('UCI HAR Dataset')) {
         unzip(filename)
 }
-#setwd('./UCI HAR Dataset/')
+setwd('./UCI HAR Dataset/')
 # getting df from dataset and assigning to variables
 #testdata
 testx <- read.table("./test/X_test.txt")
@@ -56,4 +56,4 @@ featcolnames <- gsub('^f', 'Free', featcolnames)
 featcolnames <- gsub('activityno', 'Activity', featcolnames)
 names(MeasureDat) <- featcolnames
 FinDat <- MeasureDat %>% group_by(subject, activity) %>% summarize_all(list(mean))
-write.table(FinDat, 'FinalData.txt', row.names = FALSE)
+write.table(FinDat, 'Final_Tidy_Data.txt', row.names = FALSE)
